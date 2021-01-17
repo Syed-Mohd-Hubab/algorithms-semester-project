@@ -7,32 +7,48 @@ module.exports = {
     },
 
     getLCS: (req, res, next)=>{
-        const len = algorithms.lcsLength('ABCBDAB','BDCABA')
-        console.log(`length: ${len}`)
-        // const data = fs.readFileSync('./dataset/abc.txt', 'utf8')
-        // const array = data.split('\n')
-        // for(i in array){
-        //     console.log(`${i}: ${array[i]}\n`)
-        // }
-        return res.render('../views/basic/lcs')
+        const len = []
+        const data = fs.readFileSync('./dataset/abc.txt', 'utf8')
+        const array = data.split('\n')
+        for(let i=0 ; i<20 ; i=i+2){
+            len.push(algorithms.lcsLength(array[i],array[i+1]))
+        }
+        return res.render('../views/basic/lcs', { length: len })
     },
 
     getSCS: (req, res, next)=>{
-        const len = algorithms.scsLength('ABCBDAB','BDCABA')
-        console.log(`length: ${len}`)
-        return res.render('../views/basic/scs')
+        const len = []
+        const data = fs.readFileSync('./dataset/abc.txt', 'utf8')
+        const array = data.split('\n')
+        for(let i=0 ; i<20 ; i=i+2){
+            len.push(algorithms.scsLength(array[i],array[i+1]))
+        }
+        return res.render('../views/basic/scs', { length: len })
     },
 
     getLD: (req, res, next)=>{
-        const len = algorithms.ldLength('kitten','sitting')
-        console.log(`length: ${len}`)
-        return res.render('../views/basic/ld')
+        const len = []
+        const data = fs.readFileSync('./dataset/abc.txt', 'utf8')
+        const array = data.split('\n')
+        for(let i=0 ; i<20 ; i=i+2){
+            len.push(algorithms.ldLength(array[i],array[i+1]))
+        }
+        return res.render('../views/basic/ld', { length: len })
     },
 
     getLIS: (req, res, next)=>{
-        const len = algorithms.lisLengthp([ 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15 ])
-        console.log(`length: ${len}`)
-        return res.render('../views/basic/lis')
+        const len = []
+        const data = fs.readFileSync('./dataset/dei.txt', 'utf8')
+        const array = data.split('\n')
+        for(let i=0 ; i<10 ; i++){
+            const splitNumbers = array[i].split(',')
+            console.log(splitNumbers)
+
+            len.push(algorithms.lisLength(splitNumbers))
+        }
+        for(i in len)
+            console.log(i+':'+len[i])
+        return res.render('../views/basic/lis',{ length: len })
     },
 
     getMCM: (req, res, next)=>{
