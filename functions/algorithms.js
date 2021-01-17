@@ -1,23 +1,4 @@
 const INT_MAX = Math.pow(2,1023)
-const matrixName = 'A'
-let matrixNumber = 1
-let answer = ''
-
-function printParenthesis(i,j,brackets){
-    if(i == j){
-        // answer = answer + matrixName + matrixNumber
-        process.stdout.write(''+matrixName+matrixNumber)
-        matrixNumber++;
-        return;
-    }else{                
-        // answer += '('  
-        process.stdout.write('(')
-        printParenthesis(i, brackets[i][j], brackets);
-        printParenthesis(brackets[i][j]+1, j, brackets);
-        // answer += ')'
-        process.stdout.write(')')
-    }
-}
 
 module.exports = {
     lcsLength: (X,Y)=>{
