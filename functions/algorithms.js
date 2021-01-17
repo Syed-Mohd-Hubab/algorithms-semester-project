@@ -384,18 +384,4 @@ module.exports = {
             }
         }
     },
-
-    printParenthesis: function printParenthesis(i,j,brackets,matrixName,answer){
-        if(i == j){
-            answer += matrixName 
-            matrixName = String.fromCharCode(matrixName.charCodeAt() + 1)
-            return;
-        }else{                
-            answer += '('  
-            printParenthesis(i, brackets[i][j], brackets, matrixName, answer);
-            printParenthesis(brackets[i][j]+1, j, brackets, matrixName, answer);
-            answer += ')'
-        }
-        console.log(answer)
-    }
 }
