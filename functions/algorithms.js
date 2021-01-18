@@ -147,7 +147,6 @@ module.exports = {
 
     lisLength: (arr)=>{
         const n = arr.length
-
         let L = new Array(n)
         for(i=0 ; i<n ; i++)
             L[i]=0
@@ -354,18 +353,18 @@ module.exports = {
     },
 
     wbp: function wbp(s, dict, answer){
-        var strLen = s.length;
+        var strLen = s.length
         if (strLen === 0) {
-            return true;
+            return true
         } else {
-            var prefix = '';
+            var prefix = ''
             for (var i = 0; i < strLen; i++) {
-                prefix += s.charAt(i);
+                prefix += s.charAt(i)
                 if (dict.indexOf(prefix) > -1) {
-                    answer += prefix + ' ';
-                    var suffix = s.slice(i + 1);
+                    answer += prefix + ' '
+                    var suffix = s.slice(i + 1)
                     if (wbp(suffix, dict, answer)) {
-                        return true;
+                        return true
                     }
                 }
             }
