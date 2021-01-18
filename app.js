@@ -5,6 +5,7 @@ const morgan = require('morgan')
 /*  initializing packages   */
 
 //requiring routes
+const algoRoutes = require('./routes/algo')
 const basicRoutes = require('./routes/basic')
 
 //initializing app
@@ -33,7 +34,8 @@ if(NODE_ENV === 'development'){
 }
 
 //routing all request
-app.use('/',basicRoutes)
+app.use('/', basicRoutes)
+app.use('/algorithms', algoRoutes)
 
 app.listen(
     PORT,
