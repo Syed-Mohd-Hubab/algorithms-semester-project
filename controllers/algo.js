@@ -117,7 +117,7 @@ module.exports = {
     //e
     getMCM: (req, res, next)=>{
         let filename = './dataset/'
-        const len = []
+        const answer = []
         filename = filename + req.params.dataset + '.txt'
         const data = fs.readFileSync(filename, 'utf8')
         const array = data.split('\n')
@@ -126,9 +126,9 @@ module.exports = {
             splitNumbers[splitNumbers.length-1] = splitNumbers[splitNumbers.length-1].replace('\r','')
             for(j in splitNumbers)
                 splitNumbers[j] = Number(splitNumbers[j])
-            len.push(algorithms.mcm(splitNumbers))
+            answer.push(algorithms.mcm(splitNumbers))
         }
-        return res.render('../views/algo/mcm', { array: array , length: len })
+        return res.render('../views/algo/mcm', { array: array , answer: answer })
     },
 
     //f

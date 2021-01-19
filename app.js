@@ -34,7 +34,7 @@ if(NODE_ENV === 'development'){
 }
 
 //routing all request
-app.use('/', basicRoutes)
+app.use('/', basicRoutes) 
 app.use('/algorithms', algoRoutes)
 
 app.listen(

@@ -1,4 +1,20 @@
 const INT_MAX = Math.pow(2,1023)
+const matrixName = 'A'
+let matrixNumber = 1
+let answer = ''
+
+function printParenthesis(i,j,brackets){
+    if(i == j){
+        answer = answer + matrixName + matrixNumber
+        matrixNumber++;
+        return;
+    }else{                
+        answer += '('
+        printParenthesis(i, brackets[i][j], brackets);
+        printParenthesis(brackets[i][j]+1, j, brackets);
+        answer += ')'
+    }
+}
 
 module.exports = {
     lcsLength: (X,Y)=>{
@@ -209,7 +225,21 @@ module.exports = {
             }
         }
 
-        return c[1][n - 1]
+        //parenthesizing
+        answer = ''
+        matrixNumber = 1
+        printParenthesis(0,n-1,brackets)
+
+        //for answers too big
+        if(c[1][n-1]==0)
+            c[1][n-1]=-1
+
+        //parsing answer
+        const ans = {
+            length: c[1][n-1],
+            bracket: answer
+        }
+        return ans
     },
 
     kp: (v,w,W)=>{
@@ -361,4 +391,5 @@ module.exports = {
             }
         }
     },
+
 }

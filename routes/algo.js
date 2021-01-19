@@ -1,4 +1,5 @@
 const express = require('express')
+const algorithms = require('../functions/algorithms')
 const router = express.Router()
 const algo = require('../controllers/algo')
 
