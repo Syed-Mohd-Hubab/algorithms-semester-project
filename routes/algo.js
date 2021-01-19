@@ -22,24 +22,24 @@ router.get('/i', algo.getdataseti)
 
 router.get('/j', algo.getdatasetj)
 
-router.get('/lcs', algo.getLCS)
+router.get('/:dataset/lcs', algo.getLCS)
 
-router.get('/scs', algo.getSCS)
+router.get('/:dataset/scs', algo.getSCS)
 
-router.get('/ld', algo.getLD)
+router.get('/:dataset/ld', algo.getLD)
 
-router.get('/lis', algo.getLIS)
+router.get('/:dataset/lis', algo.getLIS)
 
-router.get('/mcm', algo.getMCM)
+router.get('/:dataset/mcm', algo.getMCM)
 
-router.get('/01kp', algo.get01KP)
+router.get('/:dataset/01kp', algo.get01KP)
 
-router.get('/pp', algo.getPP)
+router.get('/:dataset/pp', algo.getPP)
 
-router.get('/rcp', algo.getRCP)
+router.get('/:dataset/rcp', algo.getRCP)
 
-router.get('/ccmp', algo.getCCMP)
+router.get('/:dataset/ccmp', algo.getCCMP)
 
-router.get('/wbp', algo.getWBP)
+router.get('/:dataset/wbp', algo.getWBP)
 
 module.exports = router

@@ -1,18 +1,18 @@
-<% include('../partials/header') %>
+<%- include('../partials/header') %>
     <div class="container">
         <div class="row">
-            <h2>SCS Length</h2>
             <section id="appointment" data-stellar-background-ratio="3">
-                <div class="col-xs-6">
-                    <div class="wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="col-xs-12">
-                            <a href="/lcs">
-                                <button type="submit" class="form-control" id="cf-submit">button</button>
-                            </a>
-                        </div>
+                <h2>Shortest Common Subsequence Problem</h2>
+                <div class="col-xs-12">
+                    <div class="col-xs-12">
+                        <% for(let i=0, j=0 ; i<20 ; i=i+2, j++){ %> 
+                            <p style="overflow: auto;"><%=j+1%>) <%=array[i]%> <br>
+                                <%=array[i+1]%></p>
+                            <strong>Answer: <%=length[j]%></strong> <br><br>
+                        <% } %>
                     </div>
                 </div>
-             </section>
+            </section>
         </div>
    </div>
-<% include('../partials/footer') %>
+<%- include('../partials/footer') %>

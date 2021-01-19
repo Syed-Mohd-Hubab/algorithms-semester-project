@@ -132,15 +132,6 @@ module.exports = {
                                             T[i - 1][j - 1] + substitutionCost) // replace (case 2 & 3c)
             }
         }
-        
-        for (let i = 0; i <= m; i++)
-        {
-            for (let j = 0; j <= n; j++)
-            {
-                process.stdout.write(' '+T[i][j]+' ')
-            }
-            console.log("\n")
-        }
 
         return T[m][n]
     },
@@ -192,10 +183,10 @@ module.exports = {
             brackets[i] = [n+1]
         }
 
-        for (let i = 0; i <= 5; i++)
-            for (let j = 0; j <= 5; j++)
+        for (let i = 0; i <= n; i++)
+            for (let j = 0; j <= n; j++)
             {
-                c[i][j]=0
+                c[i][j] = 0
                 brackets[i][j] = 0
             }
      
@@ -303,7 +294,7 @@ module.exports = {
     rcp: (price,n)=>{
         // T[i] stores maximum profit achieved from rod of length i
         let T = new Array(n + 1)
-     
+        let sizeofprice = price.length
         // initialize maximum profit to 0
         for (let i = 0; i <= n; i++)
             T[i] = 0
@@ -313,7 +304,7 @@ module.exports = {
         {
             // divide the rod of length i into two rods of length j
             // and i-j each and take maximum
-            for (let j = 1; j <= i; j++)
+            for (let j = 1; j <= (i < sizeofprice ? i : sizeofprice) ; j++)
                 T[i] = Math.max(T[i], price[j - 1] + T[i - j])
         }
      
