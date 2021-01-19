@@ -1,4 +1,20 @@
 const INT_MAX = Math.pow(2,1023)
+const matrixName = 'A'
+let matrixNumber = 1
+let answer = ''
+
+function printParenthesis(i,j,brackets){
+    if(i == j){
+        answer = answer + matrixName + matrixNumber
+        matrixNumber++;
+        return;
+    }else{                
+        answer += '('
+        printParenthesis(i, brackets[i][j], brackets);
+        printParenthesis(brackets[i][j]+1, j, brackets);
+        answer += ')'
+    }
+}
 
 module.exports = {
     lcsLength: (X,Y)=>{
@@ -132,22 +148,12 @@ module.exports = {
                                             T[i - 1][j - 1] + substitutionCost) // replace (case 2 & 3c)
             }
         }
-        
-        for (let i = 0; i <= m; i++)
-        {
-            for (let j = 0; j <= n; j++)
-            {
-                process.stdout.write(' '+T[i][j]+' ')
-            }
-            console.log("\n")
-        }
 
         return T[m][n]
     },
 
     lisLength: (arr)=>{
         const n = arr.length
-
         let L = new Array(n)
         for(i=0 ; i<n ; i++)
             L[i]=0
@@ -193,10 +199,10 @@ module.exports = {
             brackets[i] = [n+1]
         }
 
-        for (let i = 0; i <= 5; i++)
-            for (let j = 0; j <= 5; j++)
+        for (let i = 0; i <= n; i++)
+            for (let j = 0; j <= n; j++)
             {
-                c[i][j]=0
+                c[i][j] = 0
                 brackets[i][j] = 0
             }
      
@@ -219,7 +225,21 @@ module.exports = {
             }
         }
 
-        return c[1][n - 1]
+        //parenthesizing
+        answer = ''
+        matrixNumber = 1
+        printParenthesis(0,n-1,brackets)
+
+        //for answers too big
+        if(c[1][n-1]==0)
+            c[1][n-1]=-1
+
+        //parsing answer
+        const ans = {
+            length: c[1][n-1],
+            bracket: answer
+        }
+        return ans
     },
 
     kp: (v,w,W)=>{
@@ -304,7 +324,7 @@ module.exports = {
     rcp: (price,n)=>{
         // T[i] stores maximum profit achieved from rod of length i
         let T = new Array(n + 1)
-     
+        let sizeofprice = price.length
         // initialize maximum profit to 0
         for (let i = 0; i <= n; i++)
             T[i] = 0
@@ -314,7 +334,7 @@ module.exports = {
         {
             // divide the rod of length i into two rods of length j
             // and i-j each and take maximum
-            for (let j = 1; j <= i; j++)
+            for (let j = 1; j <= (i < sizeofprice ? i : sizeofprice) ; j++)
                 T[i] = Math.max(T[i], price[j - 1] + T[i - j])
         }
      
@@ -354,21 +374,22 @@ module.exports = {
     },
 
     wbp: function wbp(s, dict, answer){
-        var strLen = s.length;
+        var strLen = s.length
         if (strLen === 0) {
-            return true;
+            return true
         } else {
-            var prefix = '';
+            var prefix = ''
             for (var i = 0; i < strLen; i++) {
-                prefix += s.charAt(i);
+                prefix += s.charAt(i)
                 if (dict.indexOf(prefix) > -1) {
-                    answer += prefix + ' ';
-                    var suffix = s.slice(i + 1);
+                    answer += prefix + ' '
+                    var suffix = s.slice(i + 1)
                     if (wbp(suffix, dict, answer)) {
-                        return true;
+                        return true
                     }
                 }
             }
         }
     },
+
 }
