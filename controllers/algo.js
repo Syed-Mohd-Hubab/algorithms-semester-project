@@ -178,13 +178,13 @@ module.exports = {
         filename = filename + req.params.dataset + '.txt'
         const data = fs.readFileSync(filename, 'utf8')
         const array = data.split('\n')
-        for(let i=0 ; i<10 ; i++){
+        for(let i=0 ; i<20 ; i=i+2){
             let splitNumbers = array[i].split(',')
             splitNumbers[splitNumbers.length-1] = splitNumbers[splitNumbers.length-1].replace('\r','')
-            for(j in splitNumbers)
+            for(j in splitNumbers){
                 splitNumbers[j] = Number(splitNumbers[j])
+            }
             len.push(algorithms.rcp(splitNumbers,rodlength))
-            // console.log(len[i])
         }
         return res.render('../views/algo/rcp', { array: array , length: len, rodlength: rodlength })
     },
@@ -193,7 +193,7 @@ module.exports = {
     getCCMP: (req, res, next)=>{
         let filename = './dataset/'
         const len = []
-        const coinchange = 357
+        const coinchange = 1000
         filename = filename + req.params.dataset + '.txt'
         const data = fs.readFileSync(filename, 'utf8')
         const array = data.split('\n')

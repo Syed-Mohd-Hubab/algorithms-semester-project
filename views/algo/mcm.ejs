@@ -8,11 +8,11 @@
                         <% for(let i=0 ; i<10 ; i++){ %> 
                             <p style="overflow: auto;"><%=i+1%>)<%=array[i]%></p>
                             <% if(answer[i].length != -1){ %> 
-                            <strong>Minimum Operations:  <%=answer[i].length%></strong> <br><br>
+                            <strong>Minimum Operations:  <%=answer[i].length%></strong> <br>
                             <% }else{ %>
-                            <strong>Minimum Operations:  Answer too big that could not fit the maximum supported size of integer</strong> <br><br>
-                            <% } %>  
-                            <strong style="overflow: auto;">Bracketting: <%=answer[i].bracket%></strong> <br><br>
+                            <strong>Minimum Operations:  Answer too big that could not fit the maximum supported size of integer</strong> <br>
+                            <% } %>
+                            <p style="overflow: auto; font-weight: bold; color: #333;">Bracketting: <%=answer[i].bracket%></p> <br>
                         <% } %>
                     </div>
                 </div>

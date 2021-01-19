@@ -4,4 +4,6 @@ const basic = require('../controllers/basic')
 
 router.get(['/', '/home'], basic.getHome)
 
+router.get('/credits' , basic.getCredits)
+
 module.exports = router
