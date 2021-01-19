@@ -266,8 +266,7 @@ module.exports = {
                     T[i][j] = T[i-1][j]
                 else
                 // find max value by excluding or including the ith item
-                    T[i][j] = Math.max(T[i-1][j],
-                                T[i-1][j-w[i-1]] + v[i-1])
+                    T[i][j] = Math.max(T[i-1][j], T[i-1][j-w[i-1]] + v[i-1])
             }
         }
      
@@ -324,20 +323,22 @@ module.exports = {
     rcp: (price,n)=>{
         // T[i] stores maximum profit achieved from rod of length i
         let T = new Array(n + 1)
-        let sizeofprice = price.length
+
         // initialize maximum profit to 0
         for (let i = 0; i <= n; i++)
             T[i] = 0
-     
+
         // consider rod of length i
         for (let i = 1; i <= n; i++)
         {
             // divide the rod of length i into two rods of length j
             // and i-j each and take maximum
-            for (let j = 1; j <= (i < sizeofprice ? i : sizeofprice) ; j++)
-                T[i] = Math.max(T[i], price[j - 1] + T[i - j])
+            // divide the rod of length i into two rods of length j
+		    // and i-j each and take maximum
+            for (let j = 1; j <= (i < price.length ? i : price.length) ; j++)
+                T[i] = Math.max(T[i], price[j - 1] + T[i - j]);
         }
-     
+
         // T[n] stores maximum profit achieved from rod of length n
         return T[n]
     },
